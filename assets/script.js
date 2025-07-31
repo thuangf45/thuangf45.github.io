@@ -1,4 +1,4 @@
-document.getElementById("carousel-container").innerHTML = `
+document.getElementById("container1").innerHTML = `
 <div
   id="carouselExampleCaptions"
   class="relative"
