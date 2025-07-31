@@ -139,3 +139,5 @@ document.getElementById("carousel-container").innerHTML = `
   </button>
 </div>
 `;
+
+twe.initTE({ Carousel: twe.Carousel });
