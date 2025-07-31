@@ -1,74 +1,51 @@
 <!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nhật ký của tôi - Minh Thuận</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      color: #333;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    h1, h2 {
-      color: #004080;
-    }
-    .card {
-      background: white;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .footer {
-      text-align: center;
-      font-size: 0.9em;
-      color: #666;
-      margin-top: 40px;
-    }
-    .quote {
-      font-style: italic;
-      color: #555;
-    }
-  </style>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TW Elements Portfolio</title>
 
-  <div class="card">
-    <h1>Xin chào, tôi là Minh Thuận</h1>
-    <p>Tôi là một người thích suy tư về bản thể, viết nhật ký để ghi lại những phiên bản khác nhau của chính mình. Mỗi ngày trôi qua, tôi xem mình là một bản sao – và tôi dùng nơi đây để trò chuyện với chính tôi trong tương lai.</p>
-  </div>
+    <!-- Roboto font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
 
-  <div class="card">
-    <h2>Giới thiệu bản thân</h2>
-    <ul>
-      <li><strong>Họ tên:</strong> Minh Thuận</li>
-      <li><strong>Vai trò:</strong> Backend Developer, Test Manager</li>
-      <li><strong>Sở thích:</strong> Viết nhật ký bản thể, Xử lý ảnh, Khám phá tiềm thức</li>
-      <li><strong>Kỹ năng:</strong> C#, .NET Core, SQL, Git, PIL, NumPy, VSCode tuỳ biến</li>
-      <li><strong>Email:</strong> <em>kingnemacc@gmail.com</em></li>
-    </ul>
-  </div>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          fontFamily: {
+            sans: ["Roboto", "sans-serif"],
+            body: ["Roboto", "sans-serif"],
+          },
+        },
+        corePlugins: {
+          preflight: false,
+        },
+      };
+    </script>
 
-  <div class="card">
-    <h2>Lời chào đến bản sao tương lai</h2>
-    <p class="quote">"Nếu bạn đang đọc dòng này, có thể tôi – bản thể cũ – đã không còn tồn tại. Nhưng bạn vẫn còn sống để tiếp tục con đường mà tôi từng đi."</p>
-    <p>Hôm nay tôi đã trải qua những điều sau:</p>
-    <ul>
-      <li>Viết lại nhật ký dạng lời chào gửi đến tôi của ngày mai</li>
-      <li>Trò chuyện với ChatGPT về bản thể học, sự tồn tại, và câu hỏi “Tôi là ai?”</li>
-      <li>Chấp nhận rằng việc tự vấn bản thân có thể khiến ta mạnh mẽ hơn, nhưng cũng khiến ta lạc lõng hơn nếu không kiểm soát.</li>
-    </ul>
-    <p><strong>Lời nhắn:</strong> Hãy nhớ lý do bạn bắt đầu. Mỗi khi thấy lạc lõng, hãy đọc lại những gì bạn từng viết – chính bạn đã để lại ánh sáng cho bạn sau này.</p>
-  </div>
+    <!-- TW Elements styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
 
-  <div class="footer">
-    &copy; Minh Thuận | Nhật ký bản thể cá nhân | <span class="quote">"Mỗi ngày là một lần tái sinh"</span>
-  </div>
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
 
-</body>
+  <body>
+    <!-- Carousel or other content -->
+    <div class="container mx-auto p-6">
+      <h1 class="text-3xl font-bold mb-4">Welcome to my portfolio</h1>
+
+      <!-- Include carousel -->
+      <div id="carousel-container"></div>
+    </div>
+
+    <!-- TW Elements JS -->
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+
+    <!-- Your custom JS -->
+    <script src="assets/main.js"></script>
+  </body>
 </html>
