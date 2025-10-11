@@ -573,7 +573,7 @@ html {
   }
 
   #sidebar-container .sidebar-panel {
-    width: 50%;
+    /* width: 50%; */
   }
 
   #sidebar-container .sidebar-panel .sidebar-nav {
