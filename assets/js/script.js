@@ -21,13 +21,20 @@ document.addEventListener('DOMContentLoaded', () => {
         target.classList.add('active');
     });
 
-    listenIfExists('#menu-toggle', 'click', (e) => {
-        const sidebar = document.querySelector('#sidebar');
-        console.log(sidebar);
-        if (!sidebar) return; // Không click vào item thì bỏ qua
-
+    listenIfExists('.menu-toggle', 'click', () => {
+        const sidebar_container = document.querySelector('#sidebar-container');
+        console.log(sidebar_container);
+        if (!sidebar_container) return; // Không click vào item thì bỏ qua
         // Thêm active cho item vừa click
-        sidebar.classList.toggle('active');
+        sidebar_container.classList.toggle('active');
+        
+    });
+
+    listenIfExists('.overlay', 'click', () => {
+        const sidebar_container = document.querySelector('#sidebar-container');
+        if (!sidebar_container) return; // Không click vào item thì bỏ qua
+        // Thêm active cho item vừa click
+        sidebar_container.classList.remove('active');
     });
 
     // ========= Window event =========

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Base</title>
+  <title>Minh Thuan</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <link id="fa-css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -12,11 +12,11 @@
   <script>
     document.getElementById("fa-css").onerror = function () {
       console.warn("CDN Font Awesome lỗi, dùng local fallback...");
-      this.href = "assets/css/all.min.css";
+      this.href = "assets/fonts/css/all.min.css";
     };
   </script>
   <noscript>
-    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/fonts/css/all.min.css">
   </noscript>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     onerror="this.onerror=null; this.href='../fonts/css/all.min.css';"> -->
@@ -38,16 +38,8 @@
       </div>
 
       <div id="sidebar">
-        <i class="fa-solid fa-bars" id="menu-toggle"></i>
-        <ul class="subnav">
-          <li><a href="#">Shop</a></li>
-          <li><a href="#">Entertainment</a></li>
-          <li><a href="#">Forum</a></li>
-          <li><a href="#">Journal</a></li>
-        </ul>
+        <i class="fa-solid fa-bars menu-toggle"></i>
       </div>
-
-
     </div>
 
     <div id="slider">
@@ -174,7 +166,30 @@
 
       <div class="copyright">&copy; 2025 - CPSSFA by Nguyễn Minh Thuận. All rights reserved.</div>
     </div>
-    <script type="module" src="assets/js/script.js"></script>
+  </div>
+
+  <div id="sidebar-container">
+    <div class="overlay"></div>
+    <div class="sidebar-panel">
+      <i class="fa-solid fa-bars menu-toggle"></i>
+      <ul class="sidebar-nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#blog">Blog </a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Entertainment</a></li>
+        <li><a href="#">Forum</a></li>
+        <li><a href="#">Journal</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <script type="module" src="assets/js/script.js"></script>
 </body>
 
 </html>
