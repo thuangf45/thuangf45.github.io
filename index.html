@@ -5,19 +5,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Base</title>
-  <base href="./assets/">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
   <link id="fa-css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer">
   <!-- Fallback nếu CDN lỗi -->
   <script>
     document.getElementById("fa-css").onerror = function () {
       console.warn("CDN Font Awesome lỗi, dùng local fallback...");
-      this.href = "css/all.min.css";
+      this.href = "assets/css/all.min.css";
     };
   </script>
   <noscript>
-    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
   </noscript>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     onerror="this.onerror=null; this.href='../fonts/css/all.min.css';"> -->
@@ -89,7 +88,7 @@
           <div id="avatar" class="">
             <div class="avatar-inner">
               <div class="avatar-front">
-                <img src="image/avatar/avatar_0.jpg" alt="Minh Thuận">
+                <img src="assets/image/avatar/avatar_0.jpg" alt="Minh Thuận">
               </div>
               <div class="avatar-back">
                 <h3>Minh Thuận</h3>
@@ -175,7 +174,7 @@
 
       <div class="copyright">&copy; 2025 - CPSSFA by Nguyễn Minh Thuận. All rights reserved.</div>
     </div>
-    <script type="module" src="js/script.js"></script>
+    <script type="module" src="assets/js/script.js"></script>
 </body>
 
 </html>
