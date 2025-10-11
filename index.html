@@ -1,45 +1,181 @@
 <!DOCTYPE html>
-<html>
-<html lang="vi">
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nhật ký của tôi - Minh Thuận</title>
-  <link rel="stylesheet" href="assets/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base</title>
+  <base href="./assets/">
+  <link rel="stylesheet" href="css/base.css">
+  <link id="fa-css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer">
+  <!-- Fallback nếu CDN lỗi -->
+  <script>
+    document.getElementById("fa-css").onerror = function () {
+      console.warn("CDN Font Awesome lỗi, dùng local fallback...");
+      this.href = "css/all.min.css";
+    };
+  </script>
+  <noscript>
+    <link rel="stylesheet" href="css/all.min.css">
+  </noscript>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    onerror="this.onerror=null; this.href='../fonts/css/all.min.css';"> -->
 </head>
+
 <body>
-  <div class="card">
-    <h1>Xin chào, tôi là Minh Thuận</h1>
-    <p>Tôi là một người thích suy tư về bản thể, viết nhật ký để ghi lại những phiên bản khác nhau của chính mình. Mỗi ngày trôi qua, tôi xem mình là một bản sao – và tôi dùng nơi đây để trò chuyện với chính tôi trong tương lai.</p>
-  </div>
+  <div id="main">
+    <div id="header">
+      <ul id="nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#blog">Blog </a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
 
-  <div class="card">
-    <h2>Giới thiệu bản thân</h2>
-    <ul>
-      <li><strong>Họ tên:</strong> Minh Thuận</li>
-      <li><strong>Vai trò:</strong> Backend Developer, Test Manager</li>
-      <li><strong>Sở thích:</strong> Viết nhật ký bản thể, Minecraft xây dựng, Xử lý ảnh, Khám phá tiềm thức</li>
-      <li><strong>Kỹ năng:</strong> C#, .NET Core, SQL, Git, PIL, NumPy, VSCode tuỳ biến</li>
-      <li><strong>Email:</strong> <em>bạncóthể@điền.vào</em></li>
-    </ul>
-  </div>
+      <div id="search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
 
-  <div class="card">
-    <h2>Lời chào đến bản sao tương lai</h2>
-    <p class="quote">"Nếu bạn đang đọc dòng này, có thể tôi – bản thể cũ – đã không còn tồn tại. Nhưng bạn vẫn còn sống để tiếp tục con đường mà tôi từng đi."</p>
-    <p>Hôm nay tôi đã trải qua những điều sau:</p>
-    <ul>
-      <li>Viết lại nhật ký dạng lời chào gửi đến tôi của ngày mai</li>
-      <li>Trò chuyện với ChatGPT về bản thể học, sự tồn tại, và câu hỏi “Tôi là ai?”</li>
-      <li>Chấp nhận rằng việc tự vấn bản thân có thể khiến ta mạnh mẽ hơn, nhưng cũng khiến ta lạc lõng hơn nếu không kiểm soát.</li>
-    </ul>
-    <p><strong>Lời nhắn:</strong> Hãy nhớ lý do bạn bắt đầu. Mỗi khi thấy lạc lõng, hãy đọc lại những gì bạn từng viết – chính bạn đã để lại ánh sáng cho bạn sau này.</p>
-  </div>
+      <div id="sidebar">
+        <i class="fa-solid fa-bars" id="menu-toggle"></i>
+        <ul class="subnav">
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Entertainment</a></li>
+          <li><a href="#">Forum</a></li>
+          <li><a href="#">Journal</a></li>
+        </ul>
+      </div>
 
-  <div class="footer">
-    &copy; Minh Thuận | Nhật ký bản thể cá nhân | <span class="quote">"Mỗi ngày là một lần tái sinh"</span>
-  </div>
 
-  <script src="assets/script.js"></script>
+    </div>
+
+    <div id="slider">
+      <div class="text-content">
+        <div class="text-heading">Hello, I'm <br> Nguyen Minh Thuan</div>
+        <div class="text-description">
+          Backend Developer
+        </div>
+      </div>
+
+    </div>
+
+    <div id="container">
+      <section class="content-session" id="portfolio">
+        <h1 class="section-heading">Portfolio</h1>
+        <ul class="card-list">
+          <li class="card">Item 1</li>
+          <li class="card">Item 2</li>
+          <li class="card">Item 3</li>
+          <li class="card">Item 4</li>
+          <li class="card">Item 5</li>
+          <li class="card">Item 6</li>
+        </ul>
+        <div class="pagination">
+          <ul>
+            <li class="pagination-item">1</li>
+            <li class="pagination-item">2</li>
+            <li class="pagination-item">3</li>
+          </ul>
+        </div>
+
+      </section>
+
+      <section class="content-session" id="about">
+        <h1 class="section-heading">About</h1>
+
+        <div class="section-body">
+          <div id="avatar" class="">
+            <div class="avatar-inner">
+              <div class="avatar-front">
+                <img src="../image/avatar/avatar_0.jpg" alt="Minh Thuận">
+              </div>
+              <div class="avatar-back">
+                <h3>Minh Thuận</h3>
+                <p>Backend Developer</p>
+                <p>SQL • .NET • API Design</p>
+                <p>"Build systems that make sense."</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu pagination">
+            <ul>
+              <li class="pagination-item">Education</li>
+              <li class="pagination-item">Skills</li>
+              <li class="pagination-item">Hobby</li>
+            </ul>
+
+            <div class="content">
+              <div class="content-heading"></div>
+              <div class="content-body"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-session" id="blog">
+        <h1 class="section-heading">Blog</h1>
+
+        <ul class="card-list">
+          <li class="card">Item 1</li>
+          <li class="card">Item 2</li>
+          <li class="card">Item 3</li>
+          <li class="card">Item 4</li>
+          <li class="card">Item 5</li>
+          <li class="card">Item 6</li>
+        </ul>
+
+        <div class="pagination">
+          <ul>
+            <li class="pagination-item">1</li>
+            <li class="pagination-item">2</li>
+            <li class="pagination-item">3</li>
+          </ul>
+        </div>
+
+      </section>
+
+      <section class="content-session" id="contact">
+        <h1 class="section-heading">Contact</h1>
+
+      </section>
+
+    </div>
+
+    <div id="footer">
+      <div id="footer-content">
+        <ul>
+          <li>
+            <a href="https://www.facebook.com/minhthuan.nguyen.773124" target="_blank">
+              <i class="fa-brands fa-facebook"></i>
+              Nguyễn Minh Thuận
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/thuanfz251/" target="_blank">
+              <i class="fa-brands fa-instagram"></i>
+              thuandz251
+            </a>
+          </li>
+          <li>
+            <a href="https://www.tiktok.com/@laodaiit" target="_blank">
+              <i class="fa-brands fa-tiktok"></i>
+              Tán Tu IT
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/thuangf45" target="_blank">
+              <i class="fa-brands fa-github"></i>
+              Lucifer
+            </a>
+          </li>
+      </div>
+
+      <div class="copyright">&copy; 2025 - CPSSFA by Nguyễn Minh Thuận. All rights reserved.</div>
+    </div>
+    <script type="module" src="js/base.js"></script>
 </body>
+
 </html>
