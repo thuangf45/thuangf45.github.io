@@ -336,7 +336,6 @@ html {
 }
 
 #container .content-session {
-  min-height: 100vh;
   padding: 2em;
 
   font-size: 2vw;
@@ -531,10 +530,12 @@ html {
 
   padding: 0;
   
-  display: flex;
-  
   gap: 2em;
+  display: flex;
+  flex-wrap: wrap; /* ✅ Cho phép xuống dòng */
   list-style: none;
+  text-align: center; /* Cho đẹp khi text nhiều dòng */
+  justify-content: center; /* ✅ Giữ căn giữa khi wrap */
 }
 
 #footer a {
@@ -570,10 +571,6 @@ html {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-  }
-
-  #sidebar-container .sidebar-panel {
-    /* width: 50%; */
   }
 
   #sidebar-container .sidebar-panel .sidebar-nav {
