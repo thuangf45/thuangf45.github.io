@@ -570,6 +570,12 @@ html {
     width: 40vw;
     aspect-ratio: 1 / 1;
   }
+
+  #avatar {
+    height: auto;        /* hoặc 100%, tùy ý bạn muốn full màn hay không */
+    width: 40vw;
+    aspect-ratio: 1 / 1;
+  }
 }
 
 @media (max-width: 740px){
@@ -583,7 +589,13 @@ html {
 
   .card {
     height: auto;        /* hoặc 100%, tùy ý bạn muốn full màn hay không */
-    width: 70vw;
+    width: 60vw;
+    aspect-ratio: 1 / 1;
+  }
+
+  #avatar {
+    height: auto;        /* hoặc 100%, tùy ý bạn muốn full màn hay không */
+    width: 60vw;
     aspect-ratio: 1 / 1;
   }
 
