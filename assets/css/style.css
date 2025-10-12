@@ -494,6 +494,7 @@ html {
   padding: 0.5em 1em;
   border-radius: 0.5em;
 
+  font-weight: bold;
   cursor: pointer;
   color: var(--text-light);
   background-color: var(--card-dark);
@@ -527,7 +528,6 @@ html {
 }
 
 #footer ul {
-
   padding: 0;
   
   gap: 2em;
@@ -539,16 +539,16 @@ html {
 }
 
 #footer a {
+  padding: 0.2em 0.5em; /* giữ sẵn padding */
+  border-radius: 0.5em;
+
   color: var(--accent);
   text-decoration: none;
 
-  transition: color 0.3s;
+  transition: all 0.3s ease;
 }
 
 #footer a:hover {
-  padding: 0.2em 0.5em;
-  border-radius: 0.5em;
-
   color: var(--bg-dark);
   background-color: var(--accent);
 }
