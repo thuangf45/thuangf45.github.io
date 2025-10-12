@@ -343,7 +343,7 @@ html {
 
 /* --- Section heading --- */
 .section-heading {
-  /* padding: 1em; */
+  padding: 1em;
   
   font-size: 2em;
   color: var(--accent);
@@ -564,6 +564,14 @@ html {
   color: var(--text-light);
 }
 
+@media (min-width: 740px) and (max-width: 1024px) {
+  .card {
+    height: auto;        /* hoặc 100%, tùy ý bạn muốn full màn hay không */
+    width: 40vw;
+    aspect-ratio: 1 / 1;
+  }
+}
+
 @media (max-width: 740px){
   #nav {
     transition: opacity 0.3s ease, visibility 0s 0.3s;
@@ -571,6 +579,12 @@ html {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+  }
+
+  .card {
+    height: auto;        /* hoặc 100%, tùy ý bạn muốn full màn hay không */
+    width: 70vw;
+    aspect-ratio: 1 / 1;
   }
 
   #sidebar-container .sidebar-panel .sidebar-nav {
