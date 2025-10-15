@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!sidebar_container) return; // Không click vào item thì bỏ qua
         // Thêm active cho item vừa click
         sidebar_container.classList.toggle('active');
-        
+
     });
 
     listenIfExists('.overlay', 'click', () => {
@@ -65,7 +65,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    listenWindow('keydown', (e) => {
+        // Chặn F12, Ctrl+Shift+I, Ctrl+U
+        if (
+            e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') ||
+            (e.ctrlKey && e.key.toLowerCase() === 'u')
+        ) {
+            e.preventDefault();
+            console.log('Blocked DevTools shortcut');
+        }
+    });
+
+    setInterval(() => {
+        if (detectDevTools()) {
+            location.reload();
+        }
+    }, 1000);
+
+
+
+
 });
+
+function detectDevTools() {
+    const threshold = 160;
+    return (
+        window.outerWidth - window.innerWidth > threshold ||
+        window.outerHeight - window.innerHeight > threshold
+    );
+}
+
 
 // Hàm tiện ích: chỉ thêm sự kiện nếu phần tử tồn tại
 function listenIfExists(selector, event, handler) {
