@@ -1,0 +1,34 @@
+{
+  "idle": [
+    "Bạn đang khám phá gì đó à? Mình ở đây nếu cần hỏi nha!",
+    "Trang này có nhiều thứ hay ho lắm đó!",
+    "Nếu bạn thấy hơi rối, mình có thể chỉ đường!",
+    "Bạn thấy ai đẹp trai chưa? Nhìn kỹ avatar thử xem 😏",
+    "Mình là pet hướng dẫn, không biết gì thì hỏi mình nha!"
+  ],
+  "special": {
+    ".header": "Phần đầu trang nè, nhìn cũng gọn gàng ha!",
+    ".nav": "Menu điều hướng đó, bạn muốn đi đâu thì chọn nha!",
+    ".trigger .right": "Bạn vừa lướt qua bên phải, có gì khiến bạn tò mò không?",
+    ".trigger .left": "Bên trái có vài thứ thú vị đó, thử khám phá xem!",
+    ".slider": "Slider này trượt mượt ghê, bạn có thấy nội dung nào hay không?",
+    ".avatar": "Bạn thấy ai đẹp trai chưa? Mình không nói ai đâu nha 😏",
+    ".pagination__list": "Danh sách các mục nè, bạn muốn xem phần nào trước?",
+    ".pagination__body--education": "Phần học vấn đó, nhìn cũng xịn xò ghê!",
+    ".pagination__body--skills": "Kỹ năng được trình bày rõ ràng ghê, bạn có ấn tượng không?",
+    ".pagination__body--hobby": "Sở thích giúp hiểu thêm về người tạo trang đó!",
+    ".pagination-item": "Bạn đang xem một mục, cần mình giới thiệu sơ qua không?",
+    ".contact-address": "Đây là địa chỉ liên hệ, bạn muốn gửi gì thì cứ mạnh dạn nha!",
+    ".map-toggle": "Bật bản đồ lên để xem vị trí nè!",
+    ".contact-popup-trigger": "Bạn muốn gửi tin nhắn? Nhấn vào đây là được!",
+    ".fa-github": "Xem thử các dự án mã nguồn mở ở đây nè!",
+    ".fa-facebook": "Facebook để kết nối thêm đó, bạn có dùng không?",
+    ".fa-envelope": "Gửi email nếu bạn có điều gì muốn hỏi!",
+    ".fa-linkedin": "Hồ sơ chuyên nghiệp nằm ở đây, nhìn cũng ra gì lắm!",
+    ".overlay": "Lớp phủ này giúp bạn tập trung vào nội dung chính!",
+    ".sidebar-nav": "Thanh điều hướng bên cạnh giúp bạn đi nhanh hơn!",
+    ".sidebar__menu .menu-toggle": "Bạn vừa mở menu — có nhiều thứ hay ho bên trong đó!",
+    ".abcxyz": "Rồi sao đến được đây hay vậy trời!!!"
+
+  }
+}
