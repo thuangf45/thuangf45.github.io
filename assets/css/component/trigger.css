@@ -1,0 +1,38 @@
+.trigger {
+  top: 0;
+  position: absolute;
+
+  height: 7.8vh;
+
+  display: flex;
+  align-items: center;
+}
+
+.trigger i {
+  padding: 1.8vh 2.5vh;
+  position: relative;
+
+  cursor: pointer;
+  color: var(--accent);
+
+  transition: 0.3s;
+}
+
+.trigger i::after {
+  left: 50%;
+  bottom: 0;
+  position: absolute;
+
+  width: 0;
+  height: 3px;
+  
+  content: "";
+  background-color: var(--accent);
+
+  transition: all 0.5s ease;
+  transform: translateX(-50%);
+}
+
+.trigger i:hover::after {
+  width: 78%;
+}

@@ -1,0 +1,27 @@
+/* Form liên hệ */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 1px solid var(--border-light);
+  border-radius: 0.5em;
+  background-color: var(--card-light);
+  color: var(--text-light);
+  font-size: 1em;
+}
+
+.contact-form button {
+  padding: 0.8em 1.5em;
+  background-color: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: var(--accent-hover);
+}

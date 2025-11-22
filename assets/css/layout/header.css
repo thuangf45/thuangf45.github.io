@@ -1,0 +1,28 @@
+.header {
+  position: fixed;
+  inset: 0;
+  z-index: 15;
+
+  height: 7.8vh;
+
+  background-color: transparent;
+  
+  transition: background-color 0.3s, box-shadow 0.3s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header.scrolled {
+  background-color: var(--card-dark);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+.header .trigger.left {
+  left: 0;
+}
+
+.header .trigger.right {
+  right: 0;
+}

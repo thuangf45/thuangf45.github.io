@@ -1,0 +1,115 @@
+/* --- sidebar-container --- */
+.sidebar {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+
+  height: 100vh;
+  width: 100vw;
+  
+  transition: opacity 0.3s ease, visibility 0s 0.3s;
+
+  opacity: 0;
+  display: flex;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.sidebar.sidebar--active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar.sidebar--active .overlay {
+  opacity: 0.5;
+}
+
+.sidebar__menu {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 22;
+
+  min-width: 15em;
+  height: 100%;
+
+  background-color: var(--card-light);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.sidebar.sidebar--active .sidebar__menu {
+  transform: translateX(0);
+}
+
+.sidebar__menu i {
+  padding: 2.5vh 2.5vh;
+  position: relative;
+
+  cursor: pointer;
+  color: var(--accent);
+
+  transition: 0.3s;
+}
+
+.sidebar__menu i::after {
+  left: 50%;
+  bottom: 0;
+  position: absolute;
+
+  width: 0;
+  height: 3px;
+  
+  content: "";
+  background-color: var(--accent);
+
+  transition: all 0.5s ease;
+  transform: translateX(-50%);
+}
+
+.sidebar__menu i:hover::after {
+  width: 78%;
+}
+
+.sidebar__menu ul {
+  display: block;
+  width: 100%;
+}
+
+.sidebar__menu .sidebar-nav {
+  display: none;
+} 
+
+.sidebar__menu li a {
+  line-height: 5vh;
+  padding: 0 2.5vh;
+  
+  text-decoration: none;
+  color: var(--text-light);
+  text-transform: uppercase;
+  
+  transition: 0.3s;
+  
+  display: block;
+}
+
+.sidebar__menu ul li:hover > a {
+  color: var(--bg-dark);
+  background-color: var(--accent);
+}
+
+@media (max-width: 740px){
+
+  .sidebar__menu .sidebar-nav {
+    display: block
+  }
+}

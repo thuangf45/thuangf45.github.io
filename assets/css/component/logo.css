@@ -1,0 +1,7 @@
+.logo:hover {
+  color: var(--text-light);
+}
+
+.logo:hover img {
+  box-shadow: 0 4px 16px var(--accent);
+}

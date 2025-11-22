@@ -1,0 +1,139 @@
+/* --- Notification System --- */
+#notificationContainer {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+/* --- Base --- */
+.notification {
+    display: flex;
+    flex-direction: column;
+    background: var(--card-dark);
+    border: 1px solid var(--accent);
+    border-radius: 10px;
+    padding: 10px 14px;
+    color: var(--text-light);
+    font-family: sans-serif;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+
+    width: auto;           /* co gọn theo nội dung nếu ít text */
+    min-width: 250px;      /* luôn tối thiểu 320px */
+    max-width: 250px;      /* tối đa 320px */
+    word-wrap: break-word; /* xuống dòng khi text dài */
+    position: relative;
+    overflow: hidden;
+}
+
+.notification--visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.notification--hide {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+/* --- Content layout --- */
+.notification__content {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+/* --- Icon --- */
+.notification__icon {
+    font-size: 18px;
+}
+
+/* --- Message text --- */
+.notification__text {
+    flex: 1;
+    line-height: 1.4;
+}
+
+/* --- Close button --- */
+.notification__close {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 8px;
+    transition: color 0.2s ease;
+}
+.notification__close:hover {
+    color: var(--accent);
+}
+
+/* --- Types --- */
+.notification--success {
+    border-color: #22c55e;
+}
+.notification--error {
+    border-color: #ef4444;
+}
+.notification--warning {
+    border-color: #eab308;
+}
+.notification--info {
+    border-color: #3b82f6;
+}
+
+
+/* tạo border động bằng pseudo-element */
+.notification::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 12px;
+
+    animation: rotateBorder 2.5s linear infinite;
+    z-index: -1; /* nằm dưới nội dung */
+}
+
+/* tạo lớp nền bên trong để che phần gradient dư */
+.notification::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 10px;
+    background: var(--card-dark);
+    z-index: -1;
+}
+
+/* animation quay vòng */
+@keyframes rotateBorder {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- Optional: màu viền động theo loại --- */
+.notification--success::before {
+    background: conic-gradient(#22c55e, #16a34a, #22c55e);
+}
+.notification--error::before {
+    background: conic-gradient(#ef4444, #b91c1c, #ef4444);
+}
+.notification--warning::before {
+    background: conic-gradient(#eab308, #ca8a04, #eab308);
+}
+.notification--info::before {
+    background: conic-gradient(#3b82f6, #1d4ed8, #3b82f6);
+}

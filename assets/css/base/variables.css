@@ -1,0 +1,24 @@
+:root {
+  /* 🌌 Backgrounds */
+  --bg-dark: #0a0f1e;        /* Nền chính (dark background) */
+  --bg-light: #f5f7fa;       /* Nền sáng (dùng cho section phụ, form) */
+
+  /* 🪧 Card backgrounds */
+  --card-dark: #141a29;      /* Card tối (About, Contact) */
+  --card-light: #1f2940;     /* Card sáng hơn (Portfolio, Blog) */
+  --card-hover: #24304a;     /* Hover card để tạo chiều sâu */
+
+  /* ✨ Accent / Highlight */
+  --accent: #06b6d4;         /* Cyan nhấn chính */
+  --accent-dark: #0891b2;    /* Cyan đậm hơn cho hover/active */
+  --accent-light: #67e8f9;   /* Cyan nhạt cho border, subtle highlight */
+
+  /* 📝 Text colors */
+  --text-dark: #0a0f1e;      /* Chữ tối trên nền sáng */
+  --text-light: #e0f7fa;     /* Chữ sáng trên nền tối */
+  --text-muted: #94a3b8;     /* Chữ phụ, mô tả, placeholder */
+
+  /* 🎨 Border & Divider */
+  --border-color: #1e293b;   /* Border nhẹ trên nền tối */
+  --divider-color: #334155;  /* Divider cho section */
+}

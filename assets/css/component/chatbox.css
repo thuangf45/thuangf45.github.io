@@ -1,0 +1,160 @@
+/* --- Floating Chat Box --- */
+.chat-box {
+    position: fixed;
+    bottom: 24px;
+    right: 24px; /* Góc phải */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-dark);
+    border: 1px solid var(--accent);
+    color: var(--text-light);
+    font-family: sans-serif;
+    z-index: 100;
+    transition: all 0.4s ease;
+}
+
+/* Khi active */
+.chat-box.chat-box--active {
+    width: 300px;
+    height: 420px;
+    border-radius: 10px;
+    justify-content: flex-start;
+}
+
+/* Header */
+.chat-box__header {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--card-light);
+    border-bottom: 1px solid var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.chat-box__header {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--card-light);
+    border-bottom: 1px solid var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 8px;
+    box-sizing: border-box;
+}
+
+/* Những icon hay phần bình thường xếp từ trái sang phải */
+.chat-box__header .left, {
+    order: 0; /* mặc định ở đầu */
+}
+
+/* Những phần có right luôn nằm sát phải */
+.chat-box__header .right {
+    margin-left: auto; /* đẩy về phải */
+    order: 1;
+}
+
+/* Body */
+.chat-box__body {
+    flex: 1;
+    width: 100%;
+    padding: 10px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-y: auto;
+}
+
+.chat-box__body .spacer {
+    flex-grow: 1; /* chiếm chỗ phía trên */
+}
+
+/* Footer */
+.chat-box__footer {
+    width: 100%; /* chiếm full ngang */
+    display: flex;
+    align-items: center;
+    border-top: 1px solid var(--accent);
+    background: var(--card-light);
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+/* Input */
+.chat-box__input {
+    flex: 1;
+    padding: 8px;
+    background: var(--bg-dark);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    color: var(--text-light);
+    outline: none;
+}
+
+/* Send Button */
+.chat-box__send {
+    margin-left: 8px;
+    padding: 8px 12px;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+.chat-box__send:hover {
+    color: var(--text-dark);
+    background-color: var(--accent);
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--accent);
+}
+
+/* Messages */
+.chat-msg {
+    display: inline-block;   /* bubble ôm sát nội dung */
+    margin: 4px 0;
+    padding: 6px 10px;
+    border-radius: 8px;
+    max-width: 80%;
+    word-wrap: break-word;
+    box-sizing: border-box;
+}
+
+/* Tin nhắn của mình (căn phải) */
+.chat-msg.me {
+    background: var(--accent);
+    color: var(--text-dark);
+    align-self: flex-end; /* đẩy sang phải */
+}
+
+/* Tin nhắn của người khác (căn trái) */
+.chat-msg.other {
+    background: var(--card-light);
+    color: var(--text-light);
+    align-self: flex-start; /* giữ bên trái */
+}
+
+/* Hover effect cho chat-box */
+.chat-box:hover {
+    box-shadow: 0 0 25px var(--accent);
+}

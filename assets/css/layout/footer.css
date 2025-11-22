@@ -1,0 +1,60 @@
+.footer {
+  position: relative;
+
+  height: 50vh;
+  border-top: 2px solid var(--accent);
+  
+  font-size: 1.5em;
+  color: var(--text-light);
+  background-color: var(--card-dark);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-content ul {
+  padding: 0;
+  
+  gap: 2em;
+  display: flex;
+  flex-wrap: wrap; /* ✅ Cho phép xuống dòng */
+  list-style: none;
+  text-align: center; /* Cho đẹp khi text nhiều dòng */
+  justify-content: center; /* ✅ Giữ căn giữa khi wrap */
+}
+
+.footer-content li a {
+  padding: 0.2em 0.5em; /* giữ sẵn padding */
+  border-radius: 0.5em;
+
+  color: var(--accent);
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+  
+}
+
+.footer-content li:hover a {
+  color: var(--bg-dark);
+  background-color: var(--accent);
+}
+
+.footer .copyright {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1em;
+  
+  width: 100%;
+
+  font-size: 0.9em;
+  text-align: center;
+  color: var(--text-light);
+}
+
+@media (max-width: 740px){
+  .footer {
+    font-size: 1.25em;
+  }
+}

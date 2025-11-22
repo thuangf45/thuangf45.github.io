@@ -1,0 +1,63 @@
+.avatar {
+  width: 15em;
+  height: 15em;
+  border-radius: 1em;
+  perspective: 1000px;
+}
+
+.avatar__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 1em;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.avatar:hover .avatar__inner {
+  transform: rotateY(180deg);
+}
+
+.avatar__front,
+.avatar__back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 1em;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.avatar__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar__back {
+  padding: 1em;
+  color: var(--text-light);
+  background-color: var(--card-light);
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@media (min-width: 740px) and (max-width: 1024px) {
+  .avatar {
+    height: auto;        /* hoặc 100%, tùy ý bạn muốn full màn hay không */
+    width: 50vw;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media (max-width: 740px){
+  .avatar {
+    height: auto;        /* hoặc 100%, tùy ý bạn muốn full màn hay không */
+    width: 60vw;
+    aspect-ratio: 1 / 1;
+  }
+}
