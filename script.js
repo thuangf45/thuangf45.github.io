@@ -34,34 +34,35 @@ async function fetchAllData() {
     const nugetPkg = "LuciferCore";
 
     try {
-        // 1. Fetch NuGet Data
-        const nugetRes = await fetch(`https://azuresearch-usnc.nuget.org/query?q=packageid:${nugetPkg}`);
-        const nugetData = await nugetRes.json();
+        // 1. Fetch NuGet Data (Total, Version & Velocity)
+            const nugetRes = await fetch(`https://azuresearch-usnc.nuget.org/query?q=packageid:${nugetPkg}`);
+            const nugetData = await nugetRes.json();
 
-        if (nugetData.data?.length > 0) {
-            const pkg = nugetData.data[0];
-            const totalDownloads = pkg.totalDownloads;
-            
-            // Logic tính toán velocity dựa trên release date thực tế
-            const baseVelocity = 800; 
-            const startDate = new Date('2026-01-01'); 
-            const today = new Date();
-            const diffDays = Math.ceil(Math.abs(today - startDate) / (1000 * 60 * 60 * 24)) || 1;
+            if (nugetData.data?.length > 0) {
+                const pkg = nugetData.data[0];
+                const totalDownloads = pkg.totalDownloads;
+                const latestVersion = pkg.version; // Fetch the latest version string
+                
+                const baseVelocity = 800; 
+                const startDate = new Date('2026-01-01'); 
+                const today = new Date();
+                const diffDays = Math.ceil(Math.abs(today - startDate) / (1000 * 60 * 60 * 24)) || 1;
 
-            // Average per day = (Total / Days) + Offset Base
-            const avgPerDay = Math.floor(totalDownloads / diffDays) + baseVelocity;
+                const avgPerDay = Math.floor(totalDownloads / diffDays) + baseVelocity;
 
-            const formatter = new Intl.NumberFormat('en-US', {
-                notation: "compact",
-                maximumFractionDigits: 1
-            });
+                const formatter = new Intl.NumberFormat('en-US', {
+                    notation: "compact",
+                    maximumFractionDigits: 1
+                });
 
-            document.getElementById("nuget-count").innerHTML = `
-                <span class="stat-item"><i class="fa-solid fa-download"></i> Total ${formatter.format(totalDownloads)}</span>
-                <span class="stat-divider">|</span>
-                <span class="stat-item"><i class="fa-solid fa-chart-line"></i> ${formatter.format(avgPerDay)}/day avg</span>
-            `;
-        }
+                document.getElementById("nuget-count").innerHTML = `
+                    <span class="stat-item"><i class="fa-solid fa-tag"></i> v${latestVersion}</span>
+                    <span class="stat-divider">|</span>
+                    <span class="stat-item"><i class="fa-solid fa-download"></i> ${formatter.format(totalDownloads)}</span>
+                    <span class="stat-divider">|</span>
+                    <span class="stat-item"><i class="fa-solid fa-chart-line"></i> ${formatter.format(avgPerDay)}/day avg</span>
+                `;
+            }
 
         // 2. Fetch Dev.to
         const blogRes = await fetch(`https://dev.to/api/articles?username=${username}`);
