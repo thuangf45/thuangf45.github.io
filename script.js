@@ -137,3 +137,29 @@ window.onload = () => {
     runLogs();
     fetchAllData();
 };
+
+// --- SKILLS PROGRESS ANIMATION ---
+const observerOptions = { threshold: 0.5 };
+const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const fills = entry.target.querySelectorAll('.fill');
+            fills.forEach(fill => {
+                const targetWidth = fill.style.width;
+                fill.style.width = targetWidth; // Re-trigger width animation
+            });
+        }
+    });
+}, observerOptions);
+
+// Chạy hover effect theo vị trí chuột (tùy chọn cho pro)
+document.querySelectorAll('.skill-card-v3').forEach(card => {
+    card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / card.clientWidth) * 100;
+        const y = ((e.clientY - rect.top) / card.clientHeight) * 100;
+        card.style.setProperty('--x', `${x}%`);
+        card.style.setProperty('--y', `${y}%`);
+    });
+    skillObserver.observe(card);
+});
