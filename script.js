@@ -1,4 +1,4 @@
-// System Console Simulation
+// --- SYSTEM CONSOLE SIMULATION ---
 const logs = [
     "[BOOT] System Architect Profile v2.6.4 Loaded",
     "[OK] Memory Pool Initialized (Zero-Alloc Mode)",
@@ -28,72 +28,42 @@ function runLogs() {
 }
 
 // --- DYNAMIC DATA FETCHING ---
-
 async function fetchAllData() {
     const username = "thuangf45";
     const nugetPkg = "LuciferCore";
-
     try {
-        // 1. Fetch NuGet Data (Total, Version & Velocity)
-            const nugetRes = await fetch(`https://azuresearch-usnc.nuget.org/query?q=packageid:${nugetPkg}`);
-            const nugetData = await nugetRes.json();
+        const nugetRes = await fetch(`https://azuresearch-usnc.nuget.org/query?q=packageid:${nugetPkg}`);
+        const nugetData = await nugetRes.json();
+        if (nugetData.data?.length > 0) {
+            const pkg = nugetData.data[0];
+            const startDate = new Date('2026-01-01'); 
+            const diffDays = Math.ceil(Math.abs(new Date() - startDate) / (1000 * 60 * 60 * 24)) || 1;
+            const avgPerDay = Math.floor(pkg.totalDownloads / diffDays) + 800;
+            const formatter = new Intl.NumberFormat('en-US', { notation: "compact", maximumFractionDigits: 1 });
 
-            if (nugetData.data?.length > 0) {
-                const pkg = nugetData.data[0];
-                const totalDownloads = pkg.totalDownloads;
-                const latestVersion = pkg.version; // Fetch the latest version string
-                
-                const baseVelocity = 800; 
-                const startDate = new Date('2026-01-01'); 
-                const today = new Date();
-                const diffDays = Math.ceil(Math.abs(today - startDate) / (1000 * 60 * 60 * 24)) || 1;
+            document.getElementById("nuget-count").innerHTML = `
+                <span class="stat-item"><i class="fa-solid fa-tag"></i> v${pkg.version}</span>
+                <span class="stat-divider">|</span>
+                <span class="stat-item"><i class="fa-solid fa-download"></i> ${formatter.format(pkg.totalDownloads)}</span>
+                <span class="stat-divider">|</span>
+                <span class="stat-item"><i class="fa-solid fa-chart-line"></i> ${formatter.format(avgPerDay)}/day avg</span>
+            `;
+        }
 
-                const avgPerDay = Math.floor(totalDownloads / diffDays) + baseVelocity;
-
-                const formatter = new Intl.NumberFormat('en-US', {
-                    notation: "compact",
-                    maximumFractionDigits: 1
-                });
-
-                document.getElementById("nuget-count").innerHTML = `
-                    <span class="stat-item"><i class="fa-solid fa-tag"></i> v${latestVersion}</span>
-                    <span class="stat-divider">|</span>
-                    <span class="stat-item"><i class="fa-solid fa-download"></i> ${formatter.format(totalDownloads)}</span>
-                    <span class="stat-divider">|</span>
-                    <span class="stat-item"><i class="fa-solid fa-chart-line"></i> ${formatter.format(avgPerDay)}/day avg</span>
-                `;
-            }
-
-        // 2. Fetch Dev.to
         const blogRes = await fetch(`https://dev.to/api/articles?username=${username}`);
         const articles = await blogRes.json();
-
-        // 3. Blog Algorithm
         const latest = [...articles].sort((a,b) => new Date(b.published_at) - new Date(a.published_at)).slice(0, 3);
         const top = [...articles].sort((a,b) => b.public_reactions_count - a.public_reactions_count).slice(0, 3);
 
         const render = (containerId, list, badge) => {
-            const container = document.getElementById(containerId);
-            container.innerHTML = list.map(a => {
-                const baseView = 2000; 
-                const reactionWeight = 120;
-                const commentWeight = 250; 
-                
-                const estimatedViews = a.page_views_count || (baseView + (a.public_reactions_count * reactionWeight) + (a.comments_count * commentWeight));
-                
-                const formattedViews = Intl.NumberFormat('en-US', {
-                    notation: "compact",
-                    maximumFractionDigits: 1
-                }).format(estimatedViews);
-
-                // FIX: Sử dụng Unsplash thay cho placeholder.com bị lỗi DNS
+            document.getElementById(containerId).innerHTML = list.map(a => {
+                const views = (a.public_reactions_count * 120) + (a.comments_count * 250) + 2000;
+                const formattedViews = Intl.NumberFormat('en-US', { notation: "compact", maximumFractionDigits: 1 }).format(views);
                 const safeThumb = a.cover_image || `https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&h=300`;
-
                 return `
-                    <div class="blog-card">
+                    <div class="blog-card reveal">
                         <div class="blog-thumb">
-                            <img src="${safeThumb}" alt="Article Thumbnail">
-                            <div class="thumb-overlay">${badge}</div>
+                            <img src="${safeThumb}" alt="Thumbnail"><div class="thumb-overlay">${badge}</div>
                         </div>
                         <div class="blog-info">
                             <div class="blog-meta-v2">
@@ -105,61 +75,56 @@ async function fetchAllData() {
                             <p>${a.description.substring(0, 80)}...</p>
                             <a href="${a.url}" target="_blank" class="blog-link">ANALYZE <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
-                    </div>
-                `;
+                    </div>`;
             }).join("");
-        };          
-
+            // Re-observe newly rendered cards
+            document.querySelectorAll('.blog-card.reveal').forEach(el => revealObserver.observe(el));
+        };
         render("top-blogs", top, "TOP PERFORMER");
         render("latest-blogs", latest, "LATEST LOG");
-
-    } catch (e) { 
-        console.error("System Sync Error:", e); 
-    }
+    } catch (e) { console.error("System Sync Error:", e); }
 }
 
-// Contact Form Handler
-document.querySelector("form").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const btn = e.target.querySelector("button");
-    btn.textContent = "SIGNAL TRANSMITTED";
-    btn.style.background = "#27c93f";
-    btn.style.color = "white";
-    setTimeout(() => {
-        btn.textContent = "Transmit Signal";
-        btn.style.background = "#00f3ff";
-        btn.style.color = "black";
-        e.target.reset();
-    }, 3000);
-});
-
-window.onload = () => {
-    runLogs();
-    fetchAllData();
-};
-
-// --- SKILLS PROGRESS ANIMATION ---
-const observerOptions = { threshold: 0.5 };
-const skillObserver = new IntersectionObserver((entries) => {
+// --- HIGH PERFORMANCE REVEAL ENGINE (Stronger Animation) ---
+const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            const fills = entry.target.querySelectorAll('.fill');
-            fills.forEach(fill => {
-                const targetWidth = fill.style.width;
-                fill.style.width = targetWidth; // Re-trigger width animation
-            });
+            entry.target.classList.add("active");
+            // If it's a skill card, trigger progress bars
+            if (entry.target.classList.contains('skill-card-v3')) {
+                entry.target.querySelectorAll('.fill').forEach(fill => {
+                    fill.style.width = fill.getAttribute('data-width') || fill.style.width;
+                });
+            }
         }
     });
-}, observerOptions);
+}, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
-// Chạy hover effect theo vị trí chuột (tùy chọn cho pro)
+// --- NAVBAR & MOUSE INTERACTION ---
+window.onscroll = () => {
+    const nav = document.querySelector('.navbar');
+    window.scrollY > 50 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled');
+};
+
 document.querySelectorAll('.skill-card-v3').forEach(card => {
     card.addEventListener('mousemove', e => {
         const rect = card.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / card.clientWidth) * 100;
-        const y = ((e.clientY - rect.top) / card.clientHeight) * 100;
-        card.style.setProperty('--x', `${x}%`);
-        card.style.setProperty('--y', `${y}%`);
+        card.style.setProperty('--x', `${((e.clientX - rect.left) / card.clientWidth) * 100}%`);
+        card.style.setProperty('--y', `${((e.clientY - rect.top) / card.clientHeight) * 100}%`);
     });
-    skillObserver.observe(card);
 });
+
+// --- INITIALIZATION ---
+window.onload = () => {
+    runLogs();
+    fetchAllData();
+    
+    // Khởi tạo các phần tử reveal ban đầu
+    document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+    
+    // Lưu lại width ban đầu của skill bars để animation lại
+    document.querySelectorAll('.fill').forEach(fill => {
+        fill.setAttribute('data-width', fill.style.width);
+        fill.style.width = '0';
+    });
+};

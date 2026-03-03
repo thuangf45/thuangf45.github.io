@@ -523,3 +523,106 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
 @media (max-width: 992px) { .hero-grid, .about-grid, .project-showcase, .contact-container { grid-template-columns: 1fr; } .blog-card { flex-direction: column; } .blog-thumb { min-width: 100%; height: 250px; border-right: none; } h1 { font-size: 3rem; } }
+
+/* --- ANIMATIONS DEFINITIONS --- */
+
+/* 1. Hiệu ứng xuất hiện khi cuộn trang */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 2. Hiệu ứng viền Neon chạy vòng quanh (áp dụng cho các khối spec/card) */
+@keyframes border-glow {
+    0% { border-color: rgba(0, 243, 255, 0.1); }
+    50% { border-color: rgba(0, 243, 255, 0.5); box-shadow: 0 0 15px var(--accent-glow); }
+    100% { border-color: rgba(0, 243, 255, 0.1); }
+}
+
+/* 3. Hiệu ứng trượt nhẹ cho văn bản */
+@keyframes slide-in-left {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* --- APPLYING ANIMATIONS --- */
+
+/* Tự động áp dụng cho các Section label */
+.section-label {
+    animation: slide-in-left 1s ease forwards;
+}
+
+/* Hover đặc biệt cho Skill Card v3 */
+.skill-card-v3 {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s;
+}
+
+.skill-card-v3:hover {
+    border-color: var(--accent) !important;
+    box-shadow: 0 10px 30px rgba(0, 243, 255, 0.15);
+    background: linear-gradient(145deg, #0d0d10, #141417);
+}
+
+/* Hover cho Specs Box trong About */
+.specs-box {
+    transition: 0.3s;
+}
+.specs-box:hover {
+    animation: border-glow 2s infinite;
+}
+
+/* Navbar blur effect khi cuộn */
+.navbar.scrolled {
+    padding: 15px 10%;
+    background: rgba(3, 3, 5, 0.95);
+    border-color: var(--accent);
+}
+
+/* Custom Scrollbar cho ngầu */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* --- NÂNG CẤP HIỆU ỨNG REVEAL "MẠNH" --- */
+
+.reveal {
+    opacity: 0;
+    /* Tăng biên độ lên 100px để "đủ đô" */
+    transform: translateY(100px) scale(0.95); 
+    filter: blur(5px); /* Thêm chút hiệu ứng mờ khi đang bay lên */
+    transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1); /* Easing có độ nảy */
+    visibility: hidden;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+    visibility: visible;
+}
+
+/* Kỹ thuật Staggered Delay - Phần tử hiện trễ dần */
+/* Bạn có thể thêm các class này vào HTML để tạo hiệu ứng waterfall */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+/* Hiệu ứng trượt từ trái cho Section Label */
+.section-label {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 1s ease-out;
+}
+.reveal.active .section-label {
+    opacity: 1;
+    transform: translateX(0);
+}
