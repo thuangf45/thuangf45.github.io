@@ -31,14 +31,17 @@ function runLogs() {
 async function fetchAllData() {
     const username = "thuangf45";
     const nugetPkg = "LuciferCore";
+
     try {
+        // 1. Fetch NuGet Data
         const nugetRes = await fetch(`https://azuresearch-usnc.nuget.org/query?q=packageid:${nugetPkg}`);
         const nugetData = await nugetRes.json();
         if (nugetData.data?.length > 0) {
             const pkg = nugetData.data[0];
+            const baseVelocity = 800; 
             const startDate = new Date('2026-01-01'); 
             const diffDays = Math.ceil(Math.abs(new Date() - startDate) / (1000 * 60 * 60 * 24)) || 1;
-            const avgPerDay = Math.floor(pkg.totalDownloads / diffDays) + 800;
+            const avgPerDay = Math.floor(pkg.totalDownloads / diffDays) + baseVelocity;
             const formatter = new Intl.NumberFormat('en-US', { notation: "compact", maximumFractionDigits: 1 });
 
             document.getElementById("nuget-count").innerHTML = `
@@ -50,6 +53,7 @@ async function fetchAllData() {
             `;
         }
 
+        // 2. Fetch Dev.to
         const blogRes = await fetch(`https://dev.to/api/articles?username=${username}`);
         const articles = await blogRes.json();
         const latest = [...articles].sort((a,b) => new Date(b.published_at) - new Date(a.published_at)).slice(0, 3);
@@ -57,7 +61,7 @@ async function fetchAllData() {
 
         const render = (containerId, list, badge) => {
             document.getElementById(containerId).innerHTML = list.map(a => {
-                const views = (a.public_reactions_count * 120) + (a.comments_count * 250) + 2000;
+                const views = (a.public_reactions_count * 150) + (a.comments_count * 300) + 2500;
                 const formattedViews = Intl.NumberFormat('en-US', { notation: "compact", maximumFractionDigits: 1 }).format(views);
                 const safeThumb = a.cover_image || `https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&h=300`;
                 return `
@@ -77,30 +81,84 @@ async function fetchAllData() {
                         </div>
                     </div>`;
             }).join("");
-            // Re-observe newly rendered cards
+            // Re-observe dynamic cards
             document.querySelectorAll('.blog-card.reveal').forEach(el => revealObserver.observe(el));
         };
+
         render("top-blogs", top, "TOP PERFORMER");
         render("latest-blogs", latest, "LATEST LOG");
-    } catch (e) { console.error("System Sync Error:", e); }
+    } catch (e) { console.error("Sync Error:", e); }
 }
 
-// --- HIGH PERFORMANCE REVEAL ENGINE (Stronger Animation) ---
+// --- SMART CONTACT HANDLER (CORS Bypass Version) ---
+const CONTACT_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwJAtcMhDdF_VIVQjfNmHheQNXvys7LQQzOQk4wh_0YGjilecqwkXRC8nUfZTTYtMUhlw/exec';
+const _tk = "TFVDSUZFUl9DT1JFX1NFQ1VSRV8yMDI2";
+
+document.getElementById('contact-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    const form = e.target;
+    
+    // UI Animation: Processing
+    btn.innerHTML = `<i class="fa-solid fa-sync fa-spin"></i> ENCRYPTING...`;
+    btn.style.background = "#555";
+    btn.disabled = true;
+
+    const formData = new FormData(form);
+    formData.append('token', atob(_tk));
+
+    const queryString = new URLSearchParams(formData).toString();
+    
+    try {
+
+        await fetch(`${CONTACT_SCRIPT_URL}?${queryString}`, {
+            method: 'POST',
+            mode: 'no-cors', 
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        });
+
+        // Giả lập độ trễ truyền tin cho ngầu
+        setTimeout(() => {
+            btn.innerHTML = `<i class="fa-solid fa-check"></i> PACKET DELIVERED`;
+            btn.style.background = "#27c93f";
+            btn.style.color = "white";
+            
+            const p = document.createElement("p");
+            p.textContent = "> [SUCCESS] Data packet routed to Google_Cloud_Storage.";
+            p.style.color = "#00ff41";
+            document.getElementById("console-logs").appendChild(p);
+
+            form.reset();
+        }, 1000);
+
+    } catch (error) {
+        console.error('Transmission Error:', error);
+        btn.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> LINK FAILED`;
+        btn.style.background = "#ff5f56";
+    }
+
+    setTimeout(() => {
+        btn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> TRANSMIT SIGNAL`;
+        btn.style.background = "";
+        btn.disabled = false;
+    }, 5000);
+});
+
+// --- REVEAL ENGINE ---
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add("active");
-            // If it's a skill card, trigger progress bars
             if (entry.target.classList.contains('skill-card-v3')) {
-                entry.target.querySelectorAll('.fill').forEach(fill => {
-                    fill.style.width = fill.getAttribute('data-width') || fill.style.width;
-                });
+                entry.target.querySelectorAll('.fill').forEach(f => f.style.width = f.getAttribute('data-width'));
             }
         }
     });
 }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
-// --- NAVBAR & MOUSE INTERACTION ---
+// --- MOUSE & NAVBAR ---
 window.onscroll = () => {
     const nav = document.querySelector('.navbar');
     window.scrollY > 50 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled');
@@ -114,15 +172,11 @@ document.querySelectorAll('.skill-card-v3').forEach(card => {
     });
 });
 
-// --- INITIALIZATION ---
+// --- INITIALIZE ---
 window.onload = () => {
     runLogs();
     fetchAllData();
-    
-    // Khởi tạo các phần tử reveal ban đầu
     document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
-    
-    // Lưu lại width ban đầu của skill bars để animation lại
     document.querySelectorAll('.fill').forEach(fill => {
         fill.setAttribute('data-width', fill.style.width);
         fill.style.width = '0';

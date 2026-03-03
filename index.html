@@ -46,7 +46,7 @@
         </div>
     </section>
 
-<section id="about" class="section reveal">
+    <section id="about" class="section reveal">
         <h2 class="section-label">01. System Overview (About)</h2>
         <div class="about-container-v3">
             <div class="about-main-grid">
@@ -56,26 +56,11 @@
                         <span>identity_manifest.json</span>
                     </div>
                     <div class="specs-content">
-                        <div class="spec-item">
-                            <span class="spec-label">NAME</span>
-                            <span class="spec-value">NGUYEN MINH THUAN</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">ROLE</span>
-                            <span class="spec-value accent-text">SYSTEM ARCHITECT</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">BASE_OS</span>
-                            <span class="spec-value">VNU-HCMUS (IT STUDENT)</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">COHORT</span>
-                            <span class="spec-value">2023 — 2027</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">CORE_FOCUS</span>
-                            <span class="spec-value">.NET PERFORMANCE</span>
-                        </div>
+                        <div class="spec-item"><span class="spec-label">NAME</span><span class="spec-value">NGUYEN MINH THUAN</span></div>
+                        <div class="spec-item"><span class="spec-label">ROLE</span><span class="spec-value accent-text">SYSTEM ARCHITECT</span></div>
+                        <div class="spec-item"><span class="spec-label">BASE_OS</span><span class="spec-value">VNU-HCMUS (IT STUDENT)</span></div>
+                        <div class="spec-item"><span class="spec-label">COHORT</span><span class="spec-value">2023 — 2027</span></div>
+                        <div class="spec-item"><span class="spec-label">CORE_FOCUS</span><span class="spec-value">.NET PERFORMANCE</span></div>
                     </div>
                 </div>
 
@@ -85,9 +70,7 @@
                         <p>I don't just write code; I design <strong>high-throughput ecosystems</strong>. My work revolves around eliminating bottlenecks, from byte-level manipulations to distributed system scalability.</p>
                         <p>Current mission: <em>"Breaking the Memory Wall"</em> by implementing <strong>Zero-Allocation</strong> patterns and <strong>SIMD-accelerated</strong> operations.</p>
                         <div class="vision-tags">
-                            <span>#ZeroAlloc</span>
-                            <span>#LowLatency</span>
-                            <span>#ScaleUp</span>
+                            <span>#ZeroAlloc</span><span>#LowLatency</span><span>#ScaleUp</span>
                         </div>
                     </div>
                 </div>
@@ -115,10 +98,7 @@
         <div class="skills-wrapper">
             <div class="skill-card-v3 reveal delay-1">
                 <div class="card-glow"></div>
-                <div class="skill-header">
-                    <i class="fa-solid fa-code-branch"></i>
-                    <h3>Core Languages</h3>
-                </div>
+                <div class="skill-header"><i class="fa-solid fa-code-branch"></i><h3>Core Languages</h3></div>
                 <ul class="skill-list">
                     <li><span>C# / .NET 9.0</span><div class="bar"><div class="fill" style="width: 95%"></div></div></li>
                     <li><span>C++ (Low-level)</span><div class="bar"><div class="fill" style="width: 85%"></div></div></li>
@@ -155,10 +135,9 @@
         </div>
     </section>
 
-
-    <section id="projects" class="section">
+    <section id="projects" class="section reveal">
         <h2 class="section-label">03. Featured Project</h2>
-        <div class="project-showcase">
+        <div class="project-showcase reveal delay-1">
             <div class="project-img-wrapper">
                 <img src="https://github.com/thuangf45/thuangf45/blob/main/banner.gif?raw=true" alt="LuciferCore">
             </div>
@@ -180,81 +159,50 @@
         </div>
     </section>
 
-    <section id="blog" class="section">
+    <section id="blog" class="section reveal">
         <h2 class="section-label">04. Technical Blog</h2>
-        
         <h3 class="blog-sub-title hot"><i class="fa-solid fa-fire"></i> TOP PERFORMANCE INSIGHTS</h3>
         <div id="top-blogs" class="blog-grid-dynamic"></div>
-
         <h3 class="blog-sub-title"><i class="fa-solid fa-clock-rotate-left"></i> RECENT LOGS</h3>
         <div id="latest-blogs" class="blog-grid-dynamic"></div>
     </section>
 
-    <section id="contact" class="section">
+    <section id="contact" class="section reveal">
         <h2 class="section-label">05. Establish Connection</h2>
         <div class="contact-wrapper">
             <div class="contact-grid">
-                <div class="contact-form-container">
-                    <div class="form-header">
-                        <i class="fa-solid fa-terminal"></i>
-                        <span>transmission_protocol.sh</span>
-                    </div>
-                    <form class="terminal-form">
-                        <div class="input-group">
-                            <label>SOURCE_ID</label>
-                            <input type="text" placeholder="Your Name" required>
-                        </div>
-                        <div class="input-group">
-                            <label>RETURN_PATH</label>
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="input-group">
-                            <label>PAYLOAD_DATA</label>
-                            <textarea placeholder="Write your message here..." rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary submit-signal">
-                            <i class="fa-solid fa-paper-plane"></i> TRANSMIT SIGNAL
-                        </button>
+                <div class="contact-form-container reveal delay-1">
+                    <div class="form-header"><i class="fa-solid fa-terminal"></i><span>transmission_protocol.sh</span></div>
+                    <form class="terminal-form" id="contact-form">
+                        <div class="input-group"><label>SOURCE_ID</label><input type="text" name="name" placeholder="Your Name" required></div>
+                        <div class="input-group"><label>RETURN_PATH</label><input type="email" name="email" placeholder="Your Email" required></div>
+                        <div class="input-group"><label>PAYLOAD_DATA</label><textarea name="message" placeholder="Write your message here..." rows="5" required></textarea></div>
+                        <button type="submit" class="btn btn-primary submit-signal"><i class="fa-solid fa-paper-plane"></i> TRANSMIT SIGNAL</button>
                     </form>
                 </div>
-
-                <div class="contact-methods">
+                <div class="contact-methods reveal delay-2">
                     <div class="info-card">
                         <h3>Global Access Points</h3>
                         <div class="method-links">
                             <a href="https://github.com/thuangf45" class="method-item" target="_blank">
                                 <div class="icon-box github"><i class="fa-brands fa-github"></i></div>
-                                <div class="method-text">
-                                    <span>GitHub</span>
-                                    <p>thuangf45</p>
-                                </div>
+                                <div class="method-text"><span>GitHub</span><p>thuangf45</p></div>
                             </a>
                             <a href="https://www.nuget.org/profiles/thuangf45" class="method-item" target="_blank">
                                 <div class="icon-box nuget"><i class="fa-solid fa-box-open"></i></div>
-                                <div class="method-text">
-                                    <span>NuGet</span>
-                                    <p>LuciferOfficial</p>
-                                </div>
+                                <div class="method-text"><span>NuGet</span><p>LuciferOfficial</p></div>
                             </a>
                             <a href="https://dev.to/thuangf45" class="method-item" target="_blank">
                                 <div class="icon-box devto"><i class="fa-brands fa-dev"></i></div>
-                                <div class="method-text">
-                                    <span>Dev.to</span>
-                                    <p>@thuangf45</p>
-                                </div>
+                                <div class="method-text"><span>Dev.to</span><p>@thuangf45</p></div>
                             </a>
                             <a href="mailto:kingnemacc@gmail.com" class="method-item">
                                 <div class="icon-box email"><i class="fa-solid fa-envelope"></i></div>
-                                <div class="method-text">
-                                    <span>Direct Email</span>
-                                    <p>kingnemacc@gmail.com</p>
-                                </div>
+                                <div class="method-text"><span>Direct Email</span><p>kingnemacc@gmail.com</p></div>
                             </a>
                         </div>
                     </div>
-                    <div class="quote-box">
-                        <p>"Pushing the boundaries of .NET performance, one buffer at a time."</p>
-                    </div>
+                    <div class="quote-box"><p>"Pushing the boundaries of .NET performance, one buffer at a time."</p></div>
                 </div>
             </div>
         </div>
