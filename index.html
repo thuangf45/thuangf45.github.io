@@ -174,6 +174,10 @@
                 <div class="contact-form-container reveal delay-1">
                     <div class="form-header"><i class="fa-solid fa-terminal"></i><span>transmission_protocol.sh</span></div>
                     <form class="terminal-form" id="contact-form">
+                        <div style="display:none;">
+                            <input type="text" name="system_verification_bypass" tabindex="-1" autocomplete="off">
+                        </div>
+                        
                         <div class="input-group"><label>SOURCE_ID</label><input type="text" name="name" placeholder="Your Name" required></div>
                         <div class="input-group"><label>RETURN_PATH</label><input type="email" name="email" placeholder="Your Email" required></div>
                         <div class="input-group"><label>PAYLOAD_DATA</label><textarea name="message" placeholder="Write your message here..." rows="5" required></textarea></div>

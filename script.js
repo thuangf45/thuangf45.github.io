@@ -99,49 +99,38 @@ document.getElementById('contact-form').addEventListener('submit', async (e) => 
     const btn = e.target.querySelector('button');
     const form = e.target;
     
-    // UI Animation: Processing
     btn.innerHTML = `<i class="fa-solid fa-sync fa-spin"></i> ENCRYPTING...`;
-    btn.style.background = "#555";
     btn.disabled = true;
+
+    // 1. Tạo Browser Fingerprint (Mã định danh thiết bị)
+    const fingerprint = btoa([
+        navigator.userAgent,
+        navigator.language,
+        screen.width + "x" + screen.height, // Thêm độ phân giải để ID đặc nhất có thể
+        navigator.hardwareConcurrency || 'unknown'
+    ].join('|'));
 
     const formData = new FormData(form);
     formData.append('token', atob(_tk));
+    formData.append('fingerprint', fingerprint); // Gửi mã định danh thiết bị lên server
 
     const queryString = new URLSearchParams(formData).toString();
-    
-    try {
 
+    try {
         await fetch(`${CONTACT_SCRIPT_URL}?${queryString}`, {
             method: 'POST',
-            mode: 'no-cors', 
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
+            mode: 'no-cors'
         });
 
-        // Giả lập độ trễ truyền tin cho ngầu
-        setTimeout(() => {
-            btn.innerHTML = `<i class="fa-solid fa-check"></i> PACKET DELIVERED`;
-            btn.style.background = "#27c93f";
-            btn.style.color = "white";
-            
-            const p = document.createElement("p");
-            p.textContent = "> [SUCCESS] Data packet routed to Google_Cloud_Storage.";
-            p.style.color = "#00ff41";
-            document.getElementById("console-logs").appendChild(p);
-
-            form.reset();
-        }, 1000);
-
+        // UI Success Logic...
+        btn.innerHTML = `<i class="fa-solid fa-check"></i> PACKET DELIVERED`;
+        form.reset();
     } catch (error) {
-        console.error('Transmission Error:', error);
         btn.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> LINK FAILED`;
-        btn.style.background = "#ff5f56";
     }
 
     setTimeout(() => {
         btn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> TRANSMIT SIGNAL`;
-        btn.style.background = "";
         btn.disabled = false;
     }, 5000);
 });
