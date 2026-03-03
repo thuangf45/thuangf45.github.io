@@ -3,10 +3,10 @@ const logs = [
     "[BOOT] System Architect Profile v2.6.4 Loaded",
     "[OK] Memory Pool Initialized (Zero-Alloc Mode)",
     "[OK] SIMD-128 Instruction Sets Enabled",
-    "[INFO] LuciferCore NuGet status: 21,432 downloads",
+    "[INFO] Initializing Real-time API Handlers...",
     "[INFO] Handshaking with VNU-HCMUS Servers...",
     "[OK] Buffer-Model Architecture validated",
-    "[READY] Thuan.sys is Online & Performing."
+    "[READY] Thuangf45.sys is Online & Performing."
 ];
 
 const consoleBody = document.getElementById("console-logs");
@@ -27,7 +27,42 @@ function runLogs() {
     }
 }
 
-// Contact Form Handlers
+// --- DYNAMIC DATA FETCHING ---
+
+async function fetchDynamicStats() {
+    // 1. NuGet Data
+    const nugetPkg = "LuciferCore";
+    try {
+        const response = await fetch(`https://azuresearch-usnc.nuget.org/query?q=packageid:${nugetPkg}`);
+        const data = await response.json();
+        if (data.data && data.data.length > 0) {
+            const totalDownloads = data.data[0].totalDownloads;
+            document.getElementById("nuget-count").textContent = 
+                new Intl.NumberFormat().format(totalDownloads) + " Downloads";
+        }
+    } catch (e) { 
+        console.error("NuGet API Error", e);
+        document.getElementById("nuget-count").textContent = "21K+ Downloads";
+    }
+
+    // 2. Dev.to Data
+    try {
+        const response = await fetch(`https://dev.to/api/articles?username=thuangf45`);
+        const articles = await response.json();
+        const target = articles.find(a => a.slug.includes("breaking-the-memory-wall"));
+        
+        if (target) {
+            document.getElementById("devto-reactions").textContent = target.public_reactions_count;
+            document.getElementById("devto-comments").textContent = target.comments_count;
+            // page_views_count usually requires API key, showing fallback or estimation
+            document.getElementById("devto-views").textContent = target.page_views_count || "1.6K+";
+        }
+    } catch (e) { 
+        console.error("Dev.to API Error", e);
+    }
+}
+
+// Contact Form Handler
 document.querySelector("form").addEventListener("submit", (e) => {
     e.preventDefault();
     const btn = e.target.querySelector("button");
@@ -42,45 +77,8 @@ document.querySelector("form").addEventListener("submit", (e) => {
     }, 3000);
 });
 
-window.onload = runLogs;
-
-async function fetchStats() {
-    // 1. Fetch NuGet Downloads for LuciferCore
-    // NuGet API v3 search service
-    const nugetPkg = "LuciferCore";
-    try {
-        const response = await fetch(`https://azuresearch-usnc.nuget.org/query?q=packageid:${nugetPkg}`);
-        const data = await response.json();
-        if (data.data && data.data.length > 0) {
-            const totalDownloads = data.data[0].totalDownloads;
-            // Format number: 21432 -> 21,432
-            document.getElementById("nuget-count").textContent = 
-                new Intl.NumberFormat().format(totalDownloads) + " Downloads";
-        }
-    } catch (err) {
-        console.error("NuGet API Error:", err);
-        document.getElementById("nuget-count").textContent = "21K+ Downloads"; // Fallback
-    }
-
-    // 2. Fetch Dev.to Article Stats (Optional but cool)
-    // Dùng API để lấy thông tin bài viết dựa trên ID hoặc Username
-    try {
-        const response = await fetch(`https://dev.to/api/articles?username=thuangf45`);
-        const articles = await response.json();
-        // Tìm đúng bài "Breaking the Memory Wall"
-        const target = articles.find(a => a.slug.includes("breaking-the-memory-wall"));
-        if (target) {
-            document.getElementById("devto-reactions").textContent = 
-                `#${target.public_reactions_count} Reactions`;
-        }
-    } catch (err) {
-        console.error("Dev.to API Error:", err);
-        document.getElementById("devto-reactions").textContent = "#Performance"; // Fallback
-    }
-}
-
-// Chạy hàm fetch khi trang web đã load xong
-window.addEventListener('DOMContentLoaded', () => {
-    runLogs(); // Hàm log cũ của bạn
-    fetchStats();
-});
+// Initialization
+window.onload = () => {
+    runLogs();
+    fetchDynamicStats();
+};
