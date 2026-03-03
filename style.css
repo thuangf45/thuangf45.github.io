@@ -50,6 +50,130 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;
 .card-icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; }
 .edu-item { margin: 20px 0; border-left: 2px solid var(--accent); padding-left: 20px; }
 .accent-text { color: var(--accent); font-weight: bold; }
+/* --- ABOUT SECTION UPGRADE --- */
+.about-container-v3 {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.about-main-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 30px;
+}
+
+/* Specs Box (Left Side) */
+.specs-box {
+    background: #08080a;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.specs-header {
+    background: #141417;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+}
+
+.specs-content {
+    padding: 25px;
+}
+
+.spec-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed rgba(255,255,255,0.05);
+    padding-bottom: 8px;
+}
+
+.spec-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+}
+
+.spec-value {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-align: right;
+}
+
+/* Philosophy Box (Right Side) */
+.philosophy-box {
+    padding: 20px;
+    background: radial-gradient(circle at top right, rgba(0, 243, 255, 0.05), transparent);
+    display: flex;
+    align-items: center;
+}
+
+.philosophy-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.philosophy-content p {
+    color: var(--text-dim);
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.vision-tags {
+    display: flex;
+    gap: 10px;
+}
+
+.vision-tags span {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    background: rgba(0, 243, 255, 0.1);
+    color: var(--accent);
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+/* Footer Stats Row */
+.about-footer-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    border-top: 1px solid var(--border);
+    padding-top: 40px;
+}
+
+.stat-block {
+    text-align: center;
+}
+
+.stat-num {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    text-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+}
+
+.stat-desc {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 850px) {
+    .about-main-grid { grid-template-columns: 1fr; }
+    .about-footer-stats { grid-template-columns: 1fr; gap: 40px; }
+}
 
 /* --- TECHNICAL SKILLS UPGRADE --- */
 .skills-wrapper {
