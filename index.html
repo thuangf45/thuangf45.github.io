@@ -128,20 +128,71 @@
     </section>
 
     <section id="contact" class="section">
-        <h2 class="section-label">05. Contact</h2>
-        <div class="contact-container">
-            <div class="contact-form-side">
-                <form>
-                    <input type="text" placeholder="Identity (Name)">
-                    <input type="email" placeholder="Endpoint (Email)">
-                    <textarea placeholder="Transmission Message..." rows="5"></textarea>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Transmit Signal</button>
-                </form>
-            </div>
-            <div class="contact-info-side">
-                <a href="https://github.com/thuangf45" class="info-item"><i class="fa-brands fa-github"></i><p>github.com/thuangf45</p></a>
-                <a href="https://dev.to/thuangf45" class="info-item"><i class="fa-brands fa-dev"></i><p>dev.to/thuangf45</p></a>
-                <a href="mailto:kingnemacc@gmail.com" class="info-item"><i class="fa-solid fa-envelope"></i><p>kingnemacc@gmail.com</p></a>
+        <h2 class="section-label">05. Establish Connection</h2>
+        <div class="contact-wrapper">
+            <div class="contact-grid">
+                <div class="contact-form-container">
+                    <div class="form-header">
+                        <i class="fa-solid fa-terminal"></i>
+                        <span>transmission_protocol.sh</span>
+                    </div>
+                    <form class="terminal-form">
+                        <div class="input-group">
+                            <label>SOURCE_ID</label>
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="input-group">
+                            <label>RETURN_PATH</label>
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="input-group">
+                            <label>PAYLOAD_DATA</label>
+                            <textarea placeholder="Write your message here..." rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary submit-signal">
+                            <i class="fa-solid fa-paper-plane"></i> TRANSMIT SIGNAL
+                        </button>
+                    </form>
+                </div>
+
+                <div class="contact-methods">
+                    <div class="info-card">
+                        <h3>Global Access Points</h3>
+                        <div class="method-links">
+                            <a href="https://github.com/thuangf45" class="method-item" target="_blank">
+                                <div class="icon-box github"><i class="fa-brands fa-github"></i></div>
+                                <div class="method-text">
+                                    <span>GitHub</span>
+                                    <p>thuangf45</p>
+                                </div>
+                            </a>
+                            <a href="https://www.nuget.org/profiles/thuangf45" class="method-item" target="_blank">
+                                <div class="icon-box nuget"><i class="fa-solid fa-box-open"></i></div>
+                                <div class="method-text">
+                                    <span>NuGet</span>
+                                    <p>LuciferOfficial</p>
+                                </div>
+                            </a>
+                            <a href="https://dev.to/thuangf45" class="method-item" target="_blank">
+                                <div class="icon-box devto"><i class="fa-brands fa-dev"></i></div>
+                                <div class="method-text">
+                                    <span>Dev.to</span>
+                                    <p>@thuangf45</p>
+                                </div>
+                            </a>
+                            <a href="mailto:kingnemacc@gmail.com" class="method-item">
+                                <div class="icon-box email"><i class="fa-solid fa-envelope"></i></div>
+                                <div class="method-text">
+                                    <span>Direct Email</span>
+                                    <p>kingnemacc@gmail.com</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="quote-box">
+                        <p>"Pushing the boundaries of .NET performance, one buffer at a time."</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
