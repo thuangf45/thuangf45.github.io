@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /style.css
+Allow: /script.js
+
+# Chặn các Bot rác chuyên đi crawl code để ăn cắp hoặc spam
+User-agent: CCBot
+Disallow: /
+User-agent: GPTBot
+Disallow: /
+
+# Đường dẫn Sitemap chính xác
+Sitemap: https://thuangf45.github.io/sitemap.xml
