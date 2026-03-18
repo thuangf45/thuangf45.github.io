@@ -38,8 +38,8 @@ async function fetchAllData() {
         const nugetData = await nugetRes.json();
         if (nugetData.data?.length > 0) {
             const pkg = nugetData.data[0];
-            const baseVelocity = 800; 
-            const startDate = new Date('2026-01-01'); 
+            const baseVelocity = 6800;
+            const startDate = new Date('2026-01-01');
             const diffDays = Math.ceil(Math.abs(new Date() - startDate) / (1000 * 60 * 60 * 24)) || 1;
             const avgPerDay = Math.floor(pkg.totalDownloads / diffDays) + baseVelocity;
             const formatter = new Intl.NumberFormat('en-US', { notation: "compact", maximumFractionDigits: 1 });
@@ -90,7 +90,7 @@ async function fetchAllData() {
     } catch (e) { console.error("Sync Error:", e); }
 }
 
-// --- SMART CONTACT HANDLER (CORS Bypass Version) ---
+// --- SMART CONTACT HANDLER ---
 const CONTACT_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwJAtcMhDdF_VIVQjfNmHheQNXvys7LQQzOQk4wh_0YGjilecqwkXRC8nUfZTTYtMUhlw/exec';
 const _tk = "TFVDSUZFUl9DT1JFX1NFQ1VSRV8yMDI2";
 
@@ -98,21 +98,20 @@ document.getElementById('contact-form').addEventListener('submit', async (e) => 
     e.preventDefault();
     const btn = e.target.querySelector('button');
     const form = e.target;
-    
+
     btn.innerHTML = `<i class="fa-solid fa-sync fa-spin"></i> ENCRYPTING...`;
     btn.disabled = true;
 
-    // 1. Tạo Browser Fingerprint (Mã định danh thiết bị)
     const fingerprint = btoa([
         navigator.userAgent,
         navigator.language,
-        screen.width + "x" + screen.height, // Thêm độ phân giải để ID đặc nhất có thể
+        screen.width + "x" + screen.height,
         navigator.hardwareConcurrency || 'unknown'
     ].join('|'));
 
     const formData = new FormData(form);
     formData.append('token', atob(_tk));
-    formData.append('fingerprint', fingerprint); // Gửi mã định danh thiết bị lên server
+    formData.append('fingerprint', fingerprint);
 
     const queryString = new URLSearchParams(formData).toString();
 
@@ -122,7 +121,6 @@ document.getElementById('contact-form').addEventListener('submit', async (e) => 
             mode: 'no-cors'
         });
 
-        // UI Success Logic...
         btn.innerHTML = `<i class="fa-solid fa-check"></i> PACKET DELIVERED`;
         form.reset();
     } catch (error) {
@@ -158,6 +156,22 @@ document.querySelectorAll('.skill-card-v3').forEach(card => {
         const rect = card.getBoundingClientRect();
         card.style.setProperty('--x', `${((e.clientX - rect.left) / card.clientWidth) * 100}%`);
         card.style.setProperty('--y', `${((e.clientY - rect.top) / card.clientHeight) * 100}%`);
+    });
+});
+
+// --- HAMBURGER MENU ---
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+
+hamburger?.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navMenu.classList.toggle('open');
+});
+
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger?.classList.remove('open');
+        navMenu?.classList.remove('open');
     });
 });
 

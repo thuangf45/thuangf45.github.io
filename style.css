@@ -50,6 +50,7 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;
 .card-icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; }
 .edu-item { margin: 20px 0; border-left: 2px solid var(--accent); padding-left: 20px; }
 .accent-text { color: var(--accent); font-weight: bold; }
+
 /* --- ABOUT SECTION UPGRADE --- */
 .about-container-v3 {
     display: flex;
@@ -90,21 +91,25 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;
 .spec-item {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     margin-bottom: 15px;
     border-bottom: 1px dashed rgba(255,255,255,0.05);
     padding-bottom: 8px;
+    gap: 10px;
 }
 
 .spec-label {
     font-family: var(--font-mono);
     font-size: 0.7rem;
     color: var(--text-dim);
+    flex-shrink: 0;
 }
 
 .spec-value {
     font-size: 0.85rem;
     font-weight: 700;
     text-align: right;
+    word-break: break-word;
 }
 
 /* Philosophy Box (Right Side) */
@@ -130,6 +135,7 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;
 .vision-tags {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .vision-tags span {
@@ -170,11 +176,6 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;
     letter-spacing: 1px;
 }
 
-@media (max-width: 850px) {
-    .about-main-grid { grid-template-columns: 1fr; }
-    .about-footer-stats { grid-template-columns: 1fr; gap: 40px; }
-}
-
 /* --- TECHNICAL SKILLS UPGRADE --- */
 .skills-wrapper {
     display: grid;
@@ -198,7 +199,6 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;
     background: #0e0e12;
 }
 
-/* Hiệu ứng tia sáng ẩn sau card */
 .card-glow {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -263,22 +263,22 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;
     position: relative;
     box-shadow: 0 0 10px var(--accent);
     transition: width 1.5s cubic-bezier(0.1, 0, 0.1, 1);
-    width: 0; /* JS sẽ kích hoạt animation */
+    width: 0;
 }
 
 .skill-card-v3:hover .fill {
     filter: brightness(1.2);
 }
 
-/* Projects Fix */
+/* Projects */
 .project-showcase { background: var(--card-bg); display: grid; grid-template-columns: 1fr 1.2fr; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); }
 .project-img-wrapper { background: #000; overflow: hidden; border-right: 1px solid var(--border); }
 .project-img-wrapper img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.5s; }
 .project-content { padding: 50px; display: flex; flex-direction: column; justify-content: center; }
-.project-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-.badge { background: rgba(0,243,255,0.1); color: var(--accent); padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; border: 1px solid rgba(0,243,255,0.2); }
-.project-features { display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }
-.project-features span { font-size: 0.8rem; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }
+.project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; gap: 15px; flex-wrap: wrap; }
+.project-desc { color: var(--text-dim); margin-bottom: 30px; line-height: 1.8; }
+.project-actions { display: flex; gap: 15px; flex-wrap: wrap; }
+.btn-sm { padding: 10px 20px; font-size: 0.8rem; }
 
 /* NuGet Badge Styling */
 .badge {
@@ -292,6 +292,7 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;
     gap: 12px;
     align-items: center;
     font-family: var(--font-mono);
+    flex-wrap: wrap;
 }
 
 .stat-divider {
@@ -309,27 +310,24 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;
     font-size: 0.7rem;
 }
 
-
 /* Dynamic Blog Grid */
 .blog-sub-title { font-family: var(--font-mono); font-size: 1rem; margin-bottom: 25px; color: var(--text-dim); }
 .blog-sub-title.hot { color: var(--accent); }
-.blog-grid-dynamic { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px; }
+.blog-grid-dynamic { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 50px; }
 .blog-card { background: var(--card-bg); border-radius: 15px; overflow: hidden; border: 1px solid var(--border); transition: 0.3s; display: flex; flex-direction: column; }
 .blog-card:hover { border-color: var(--accent); transform: translateY(-5px); }
 .blog-thumb { height: 180px; position: relative; }
 .blog-thumb img { width: 100%; height: 100%; object-fit: cover; }
 .thumb-overlay { position: absolute; top: 15px; left: 15px; background: var(--accent); color: #000; padding: 4px 10px; font-size: 0.65rem; font-weight: 800; border-radius: 4px; }
 .blog-info { padding: 25px; flex: 1; display: flex; flex-direction: column; }
-.blog-meta-v2 { display: flex; gap: 15px; margin-bottom: 15px; font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-dim); }
+.blog-meta-v2 { display: flex; gap: 15px; margin-bottom: 15px; font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-dim); flex-wrap: wrap; }
 .meta-item i { margin-right: 5px; }
 .fa-heart { color: #ff2e63; }
 .fa-comment { color: var(--accent); }
+.fa-eye { color: #00ff41; text-shadow: 0 0 8px rgba(0, 255, 65, 0.4); }
 .blog-info h4 { margin-bottom: 10px; font-size: 1.1rem; }
 .blog-info p { font-size: 0.85rem; color: var(--text-dim); flex: 1; margin-bottom: 15px; }
 .blog-link { color: var(--accent); text-decoration: none; font-weight: 700; font-size: 0.85rem; }
-.fa-heart { color: #ff2e63; }     /* Đỏ neon */
-.fa-comment { color: var(--accent); } /* Cyan */
-.fa-eye { color: #00ff41; text-shadow: 0 0 8px rgba(0, 255, 65, 0.4); }       /* Xanh lá matrix */
 
 .blog-meta-v2 span {
     display: flex;
@@ -347,7 +345,7 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;
     100% { opacity: 1; }
 }
 
-/* --- CONTACT SECTION UPGRADE --- */
+/* --- CONTACT SECTION --- */
 .contact-wrapper {
     max-width: 1100px;
     margin: 0 auto;
@@ -359,7 +357,6 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;
     gap: 40px;
 }
 
-/* Terminal Form Side */
 .contact-form-container {
     background: #08080a;
     border: 1px solid var(--border);
@@ -468,6 +465,7 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;
     font-size: 1.2rem;
     color: var(--text-dim);
     transition: 0.3s;
+    flex-shrink: 0;
 }
 
 .method-text span {
@@ -480,9 +478,9 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;
 .method-text p {
     font-size: 0.8rem;
     color: #666;
+    word-break: break-all;
 }
 
-/* Hover States */
 .method-item:hover .icon-box {
     transform: scale(1.1);
     border-color: var(--accent);
@@ -494,10 +492,6 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;
     color: var(--accent);
 }
 
-.github:hover { color: #fff; }
-.nuget:hover { color: #004880; }
-.devto:hover { color: #fff; }
-
 .quote-box {
     padding: 20px;
     border-left: 2px solid var(--accent);
@@ -505,10 +499,6 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;
     color: var(--text-dim);
     font-size: 0.85rem;
     background: rgba(0, 243, 255, 0.02);
-}
-
-@media (max-width: 850px) {
-    .contact-grid { grid-template-columns: 1fr; }
 }
 
 /* Buttons */
@@ -522,82 +512,12 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;
 .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); animation: pulse 2s infinite; }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-@media (max-width: 992px) { .hero-grid, .about-grid, .project-showcase, .contact-container { grid-template-columns: 1fr; } .blog-card { flex-direction: column; } .blog-thumb { min-width: 100%; height: 250px; border-right: none; } h1 { font-size: 3rem; } }
-
-/* --- ANIMATIONS DEFINITIONS --- */
-
-/* 1. Hiệu ứng xuất hiện khi cuộn trang */
+/* --- ANIMATIONS --- */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* 2. Hiệu ứng viền Neon chạy vòng quanh (áp dụng cho các khối spec/card) */
-@keyframes border-glow {
-    0% { border-color: rgba(0, 243, 255, 0.1); }
-    50% { border-color: rgba(0, 243, 255, 0.5); box-shadow: 0 0 15px var(--accent-glow); }
-    100% { border-color: rgba(0, 243, 255, 0.1); }
-}
-
-/* 3. Hiệu ứng trượt nhẹ cho văn bản */
-@keyframes slide-in-left {
-    from { transform: translateX(-20px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-
-/* --- APPLYING ANIMATIONS --- */
-
-/* Tự động áp dụng cho các Section label */
-.section-label {
-    animation: slide-in-left 1s ease forwards;
-}
-
-/* Hover đặc biệt cho Skill Card v3 */
-.skill-card-v3 {
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s;
-}
-
-.skill-card-v3:hover {
-    border-color: var(--accent) !important;
-    box-shadow: 0 10px 30px rgba(0, 243, 255, 0.15);
-    background: linear-gradient(145deg, #0d0d10, #141417);
-}
-
-/* Hover cho Specs Box trong About */
-.specs-box {
-    transition: 0.3s;
-}
-.specs-box:hover {
-    animation: border-glow 2s infinite;
-}
-
-/* Navbar blur effect khi cuộn */
-.navbar.scrolled {
-    padding: 15px 10%;
-    background: rgba(3, 3, 5, 0.95);
-    border-color: var(--accent);
-}
-
-/* Custom Scrollbar cho ngầu */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-
-/* --- NÂNG CẤP HIỆU ỨNG REVEAL "MẠNH" --- */
-
-.reveal {
-    opacity: 0;
-    /* Tăng biên độ lên 100px để "đủ đô" */
-    transform: translateY(100px) scale(0.95); 
-    filter: blur(5px); /* Thêm chút hiệu ứng mờ khi đang bay lên */
-    transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1); /* Easing có độ nảy */
+    transform: translateY(60px) scale(0.97);
+    filter: blur(4px);
+    transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     visibility: hidden;
 }
 
@@ -608,21 +528,180 @@ h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;
     visibility: visible;
 }
 
-/* Kỹ thuật Staggered Delay - Phần tử hiện trễ dần */
-/* Bạn có thể thêm các class này vào HTML để tạo hiệu ứng waterfall */
 .delay-1 { transition-delay: 0.1s; }
 .delay-2 { transition-delay: 0.2s; }
 .delay-3 { transition-delay: 0.3s; }
 .delay-4 { transition-delay: 0.4s; }
 .delay-5 { transition-delay: 0.5s; }
 
-/* Hiệu ứng trượt từ trái cho Section Label */
 .section-label {
-    opacity: 0;
-    transform: translateX(-50px);
-    transition: all 1s ease-out;
+    animation: slide-in-left 1s ease forwards;
 }
-.reveal.active .section-label {
-    opacity: 1;
-    transform: translateX(0);
+
+@keyframes slide-in-left {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.skill-card-v3 {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s;
+}
+
+.skill-card-v3:hover {
+    border-color: var(--accent) !important;
+    box-shadow: 0 10px 30px rgba(0, 243, 255, 0.15);
+    background: linear-gradient(145deg, #0d0d10, #141417);
+}
+
+.specs-box { transition: 0.3s; }
+.specs-box:hover { animation: border-glow 2s infinite; }
+
+@keyframes border-glow {
+    0% { border-color: rgba(0, 243, 255, 0.1); }
+    50% { border-color: rgba(0, 243, 255, 0.5); box-shadow: 0 0 15px var(--accent-glow); }
+    100% { border-color: rgba(0, 243, 255, 0.1); }
+}
+
+.navbar.scrolled {
+    padding: 15px 10%;
+    background: rgba(3, 3, 5, 0.95);
+    border-color: var(--accent);
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* ===== HAMBURGER MENU ===== */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1100;
+}
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ===== RESPONSIVE ===== */
+
+/* Tablet & small desktop */
+@media (max-width: 1024px) {
+    .navbar { padding: 18px 5%; }
+    .navbar.scrolled { padding: 13px 5%; }
+    .section { padding: 80px 5%; }
+    .hero-section { padding: 0 5%; }
+    .hero-grid { gap: 40px; }
+    h1 { font-size: 3.5rem; }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    h1 { font-size: 3rem; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-console { height: 260px; }
+    .hero-text { text-align: center; }
+    .hero-btns { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+    .btn-outline { margin-left: 0; }
+
+    .about-main-grid { grid-template-columns: 1fr; }
+
+    .project-showcase { grid-template-columns: 1fr; }
+    .project-img-wrapper { height: 220px; border-right: none; border-bottom: 1px solid var(--border); }
+    .project-content { padding: 30px; }
+
+    .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    /* Navbar */
+    .navbar { padding: 15px 5%; }
+    .navbar.scrolled { padding: 12px 5%; }
+    .hamburger { display: flex; }
+    .nav-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(3, 3, 5, 0.98);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 35px;
+        z-index: 1050;
+        backdrop-filter: blur(20px);
+    }
+    .nav-menu.open { display: flex; }
+    .nav-link { font-size: 1.2rem; }
+
+    /* Hero */
+    .hero-section { height: auto; padding: 110px 5% 60px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 30px; }
+    h1 { font-size: 2.4rem; }
+    .hero-sub { font-size: 1rem; }
+    .hero-btns { flex-direction: column; align-items: stretch; }
+    .btn-outline { margin-left: 0; }
+    .btn { text-align: center; }
+    .hero-console { height: 220px; }
+
+    /* Sections */
+    .section { padding: 60px 5%; }
+
+    /* About */
+    .about-main-grid { grid-template-columns: 1fr; }
+    .about-footer-stats { grid-template-columns: repeat(3, 1fr); gap: 10px; padding-top: 25px; }
+    .stat-num { font-size: 1.8rem; }
+    .stat-desc { font-size: 0.6rem; }
+    .philosophy-content h3 { font-size: 1.4rem; }
+
+    /* Skills */
+    .skills-wrapper { grid-template-columns: 1fr; }
+
+    /* Projects */
+    .project-showcase { grid-template-columns: 1fr; }
+    .project-img-wrapper { height: 200px; border-right: none; border-bottom: 1px solid var(--border); }
+    .project-content { padding: 25px; }
+    .project-header { flex-direction: column; align-items: flex-start; }
+    .project-actions .btn { flex: 1; text-align: center; }
+
+    /* Blog */
+    .blog-grid-dynamic { grid-template-columns: 1fr; }
+
+    /* Contact */
+    .contact-grid { grid-template-columns: 1fr; }
+    .terminal-form { padding: 20px; }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    h1 { font-size: 2rem; }
+    .hero-section { padding: 100px 4% 50px; }
+    .section { padding: 50px 4%; }
+    .about-footer-stats { gap: 5px; }
+    .stat-num { font-size: 1.5rem; }
+    .stat-desc { font-size: 0.55rem; letter-spacing: 0; }
+    .badge { flex-direction: column; gap: 6px; }
+    .stat-divider { display: none; }
+    .project-features { gap: 10px; }
+    .info-card { padding: 20px; }
+    .method-links { gap: 15px; }
+    .project-actions { flex-direction: column; }
+    .project-actions .btn { margin-left: 0; }
 }

@@ -65,7 +65,10 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#home" class="logo">Thuangf45<span>.SYS</span></a>
-            <ul class="nav-menu">
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
@@ -205,6 +208,7 @@
                 <div class="project-actions">
                     <a href="https://www.nuget.org/packages/LuciferCore/" target="_blank" class="btn btn-primary btn-sm">NuGet Profile</a>
                     <a href="https://github.com/thuangf45/LuciferOfficial" target="_blank" class="btn btn-outline btn-sm">Source Code</a>
+                    <a href="https://bufmod.gitbook.io/lucifercore" target="_blank" class="btn btn-outline btn-sm"><i class="fa-solid fa-book"></i> Docs</a>
                 </div>
             </div>
         </div>
@@ -228,7 +232,6 @@
                         <div style="display:none;">
                             <input type="text" name="system_verification_bypass" tabindex="-1" autocomplete="off">
                         </div>
-                        
                         <div class="input-group"><label>SOURCE_ID</label><input type="text" name="name" placeholder="Your Name" required></div>
                         <div class="input-group"><label>RETURN_PATH</label><input type="email" name="email" placeholder="Your Email" required></div>
                         <div class="input-group"><label>PAYLOAD_DATA</label><textarea name="message" placeholder="Write your message here..." rows="5" required></textarea></div>
